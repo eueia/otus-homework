@@ -8,10 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class Test {
+public class BaseTest {
 
     protected static WebDriver driver;
-    private static final Logger logger = LogManager.getLogger(Test.class);
+    private static final Logger logger = LogManager.getLogger(BaseTest.class);
 
     @Before
     public void setUp() {

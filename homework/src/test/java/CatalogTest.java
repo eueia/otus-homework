@@ -3,7 +3,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -26,7 +26,7 @@ public class CatalogTest {
         logger.info("Драйвер поднят");
     }
 
-    @Test
+    @Test(description = "Yandex каталог тест")
     public void yandex() {
         String url = "https://market.yandex.ru/";
         String electronicsBtn = "(//span[@class='_3z8GfB4w3a'])[3]";
