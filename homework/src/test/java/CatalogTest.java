@@ -1,8 +1,10 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.junit.After;
-import org.junit.Before;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,22 +13,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class CatalogTest {
-    protected static WebDriver driver;
+public class CatalogTest extends BaseTest{
+
     private static final Logger logger = LogManager.getLogger(CatalogTest.class);
 
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        logger.info("Драйвер поднят");
-    }
-
-    @Test(description = "Yandex каталог тест")
+    @Test
     public void yandex() {
         String url = "https://market.yandex.ru/";
         String electronicsBtn = "(//span[@class='_3z8GfB4w3a'])[3]";
@@ -99,15 +93,6 @@ public class CatalogTest {
         Integer goodsListsize = driver.findElements(By.xpath(listSize)).size();
         assertThat(goodsListsize, equalTo(2));
         logger.info("В списке " + goodsListsize + " товара");
-    }
-
-    @After
-    public void setDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-        logger.info("ChromeDriver is down");
-        logger.info("Это все логи на текущий час, благодарю за внимание!");
     }
 }
 

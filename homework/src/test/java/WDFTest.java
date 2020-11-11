@@ -1,6 +1,7 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -9,7 +10,7 @@ public class WDFTest {
 
     protected static WebDriver driver;
 
-    @Before
+    @BeforeAll
     public void setUpDriver() {
         String browser = System.getProperty("browser").toLowerCase();
         WebDriverFactory wdf = new WebDriverFactory(browser);
@@ -21,7 +22,7 @@ public class WDFTest {
         driver.get("https://otus.ru/");
     }
 
-    @After
+    @AfterAll
     public void setDown() {
         if (driver != null) {
             driver.quit();
