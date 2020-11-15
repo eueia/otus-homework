@@ -22,6 +22,15 @@ public class OtusPage {
     String dropdownMenuHeader = "//div[@class='header2-menu__icon-img ic-blog-default-avatar']";
     String profile = "//div[@class='header2-menu__dropdown-text']";
 
+    String fname = "id_fname";
+    String fnameLatin = "id_fname_latin";
+    String lname = "id_lname";
+    String lnameLatin = "id_lname_latin";
+    String bDate = "date_of_birth";
+    String bName = "id_blog_name";
+    String fContact = "id_contact-0-value";
+    String sContact = "id_contact-1-value";
+
     String name = "Тест";
     String surname = "Тестоедов";
     String date = "11.11.1999";
@@ -50,12 +59,12 @@ public class OtusPage {
     }
 
     public void addPersonalData() {
-        WebElement firstName = driver.findElement(By.id("id_fname"));
-        WebElement firstNameLatin = driver.findElement(By.id("id_fname_latin"));
-        WebElement lastName = driver.findElement(By.id("id_lname"));
-        WebElement lastNameLatin = driver.findElement(By.id("id_lname_latin"));
-        WebElement blogName = driver.findElement(By.id("id_blog_name"));
-        WebElement birthDay = driver.findElement(By.name("date_of_birth"));
+        WebElement firstName = driver.findElement(By.id(fname));
+        WebElement firstNameLatin = driver.findElement(By.id(fnameLatin));
+        WebElement lastName = driver.findElement(By.id(lname));
+        WebElement lastNameLatin = driver.findElement(By.id(lnameLatin));
+        WebElement blogName = driver.findElement(By.id(bName));
+        WebElement birthDay = driver.findElement(By.name(bDate));
         String saveBtn = "(//button[@name='continue'])";
 
         firstName.clear();
@@ -74,7 +83,7 @@ public class OtusPage {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1100)");
 
-        WebElement firstContactValue = driver.findElement(By.id("id_contact-0-value"));
+        WebElement firstContactValue = driver.findElement(By.id(fContact));
         firstContactValue.clear();
         firstContactValue.sendKeys(contact);
         WebElement secondContactValue = driver.findElement(By.id("id_contact-1-value"));
@@ -87,25 +96,25 @@ public class OtusPage {
     }
 
     public void checkPersonalData() {
-        WebElement firstName = driver.findElement(By.id("id_fname"));
-        WebElement firstNameLatin = driver.findElement(By.id("id_fname_latin"));
-        WebElement lastName = driver.findElement(By.id("id_lname"));
-        WebElement lastNameLatin = driver.findElement(By.id("id_lname_latin"));
-        WebElement blogName = driver.findElement(By.id("id_blog_name"));
-        WebElement birthDay = driver.findElement(By.name("date_of_birth"));
+        WebElement firstName = driver.findElement(By.id(fname));
+        WebElement firstNameLatin = driver.findElement(By.id(fnameLatin));
+        WebElement lastName = driver.findElement(By.id(lname));
+        WebElement lastNameLatin = driver.findElement(By.id(lnameLatin));
+        WebElement blogName = driver.findElement(By.id(bName));
+        WebElement birthDay = driver.findElement(By.name(bDate));
 
-        assert firstName.getAttribute("value").equals(name);
-        assert firstNameLatin.getAttribute("value").equals(name);
-        assert lastName.getAttribute("value").equals(surname);
-        assert lastNameLatin.getAttribute("value").equals(surname);
-        assert blogName.getAttribute("value").equals(name);
-        assert birthDay.getAttribute("value").equals(date);
+        assert firstName.getAttribute("value").contentEquals(name);
+        assert firstNameLatin.getAttribute("value").contentEquals(name);
+        assert lastName.getAttribute("value").contentEquals(surname);
+        assert lastNameLatin.getAttribute("value").contentEquals(surname);
+        assert blogName.getAttribute("value").contentEquals(name);
+        assert birthDay.getAttribute("value").contentEquals(date);
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1100)");
 
-        WebElement firstContactValue = driver.findElement(By.id("id_contact-0-value"));
-        WebElement secondContactValue = driver.findElement(By.id("id_contact-1-value"));
+        WebElement firstContactValue = driver.findElement(By.id(fContact));
+        WebElement secondContactValue = driver.findElement(By.id(sContact));
 
         assert firstContactValue.getAttribute("value").contentEquals(contact);
         assert secondContactValue.getAttribute("value").contentEquals(contact);
