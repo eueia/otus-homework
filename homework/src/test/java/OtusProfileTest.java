@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.OtusPage;
+import pages.OtusPersonalDataPage;
 
 public class OtusProfileTest {
 
@@ -25,7 +27,8 @@ public class OtusProfileTest {
         logger.info("Авторизация в OTUS");
         page.goToProfile();
         logger.info("Переход в личный профиль");
-        page.addPersonalData();
+        OtusPersonalDataPage profilePage = new OtusPersonalDataPage();
+        profilePage.addPersonalData();
         logger.info("Личные данные заполнены и сохранены");
         OtusPage.driver.manage().deleteAllCookies();
         logger.info("Сессия удалена");
@@ -35,7 +38,7 @@ public class OtusProfileTest {
         logger.info("Авторизация в OTUS");
         page.goToProfile();
         logger.info("Переход в личный профиль");
-        page.checkPersonalData();
+        profilePage.checkPersonalData();
         logger.info("Личные данные в профиле соответствуют сохраненным ранее");
     }
 
