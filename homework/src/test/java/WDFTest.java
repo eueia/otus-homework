@@ -11,7 +11,7 @@ public class WDFTest {
     protected static WebDriver driver;
 
     @BeforeAll
-    public void setUpDriver() {
+    public static void setUpDriver() {
         String browser = System.getProperty("browser").toLowerCase();
         WebDriverFactory wdf = new WebDriverFactory(browser);
         driver = wdf.createDriver(new DesiredCapabilities());
@@ -23,7 +23,7 @@ public class WDFTest {
     }
 
     @AfterAll
-    public void setDown() {
+    public static void setDown() {
         if (driver != null) {
             driver.quit();
         }
