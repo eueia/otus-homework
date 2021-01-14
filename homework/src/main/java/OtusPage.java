@@ -1,11 +1,16 @@
+import java.io.ByteArrayInputStream;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 
 public class OtusPage {
 
@@ -36,12 +41,14 @@ public class OtusPage {
     String date = "11.11.1999";
     String contact = "My contact";
 
+    @Step("Get otus.ru")
     public void getOtusPage() {
         driver.get("https://otus.ru/");
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS).implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+    @Step("Auth to otus.ru")
     public void auth() {
         driver.findElement(By.xpath(authRegButton)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(emailField)));
@@ -50,6 +57,7 @@ public class OtusPage {
         driver.findElement(By.xpath(loginBtn)).click();
     }
 
+    @Step("Go to Otus profile")
     public void goToProfile() {
         WebElement menu = driver.findElement(By.xpath(dropdownMenuHeader));
         Actions actions = new Actions(driver);
@@ -58,6 +66,7 @@ public class OtusPage {
         profileOtus.click();
     }
 
+    @Step("Add personal data to profile")
     public void addPersonalData() {
         WebElement firstName = driver.findElement(By.id(fname));
         WebElement firstNameLatin = driver.findElement(By.id(fnameLatin));
@@ -93,8 +102,11 @@ public class OtusPage {
         js.executeScript("window.scrollBy(0,700)");
 
         driver.findElement(By.xpath(saveBtn)).click();
+        Allure.addAttachment("PersonalDataPage", new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES)));
     }
 
+    @Step("Check personal data after save")
     public void checkPersonalData() {
         WebElement firstName = driver.findElement(By.id(fname));
         WebElement firstNameLatin = driver.findElement(By.id(fnameLatin));
