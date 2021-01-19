@@ -1,4 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterAll;
@@ -6,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+@Feature("Otus Profile")
 public class OtusProfileTest {
 
     private static final Logger logger = LogManager.getLogger(OtusProfileTest.class);
@@ -17,6 +20,7 @@ public class OtusProfileTest {
         logger.info("ChromeDriver is up");
     }
     @Test
+    @Description(value = "Add personal data to Otus profile and check after saving")
     public void addProfileData() {
         OtusPage page = new OtusPage();
         page.getOtusPage();
