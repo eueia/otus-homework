@@ -1,5 +1,6 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -15,6 +16,7 @@ public class CatalogTest extends BaseTest{
     private static final Logger logger = LogManager.getLogger(CatalogTest.class);
 
     @Test
+    @Disabled
     public void yandex() {
         String url = "https://market.yandex.ru/";
         String electronicsBtn = "(//span[@class='_3z8GfB4w3a'])[3]";
