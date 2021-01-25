@@ -65,14 +65,14 @@ public class OtusSteps {
         OtusPage.driver.close();
     }
 
-    @Then("Check Otus support email is \"help@otus.ru\"")
-    public void checkEmail() {
-        page.checkOtusEmail("help@otus.ru");
+    @Then("Check Otus support email is {string}")
+    public void checkEmail(String email) {
+        page.checkOtusEmail(email);
     }
 
-    @Then("Check Otus phone is \"+7 499 938-92-02\"")
-    public void checkPhone() {
-        page.checkOtusPhone("+7 499 938-92-02");
+    @Then("Check Otus phone is {string}")
+    public void checkPhone(String phone) {
+        page.checkOtusPhone(phone);
     }
 
     @Then("Go to Otus Contact Page")
@@ -81,34 +81,34 @@ public class OtusSteps {
         contactPage = new OtusContactPage();
     }
 
-    @And("Check \"Вконтакте\" link is correct")
-    public void checkVk() {
-        contactPage.checkVkLink("https://vk.com/club145052891");
+    @And("Check \"Вконтакте\" link is {string}")
+    public void checkVk(String vkLink) {
+        contactPage.checkVkLink(vkLink);
     }
 
-    @And("Check \"Facebook\" link is correct")
-    public void checkFb() {
-        contactPage.checkFbLink("https://www.facebook.com/otus.ru/");
+    @And("Check \"Facebook\" link is {string}")
+    public void checkFb(String fbLink) {
+        contactPage.checkFbLink(fbLink);
     }
 
-    @And("Check \"OK\" link is correct")
-    public void checkOk() {
-        contactPage.checkOkLink("https://ok.ru/group/54448251797611");
+    @And("Check \"OK\" link is {string}")
+    public void checkOk(String okLink) {
+        contactPage.checkOkLink(okLink);
     }
 
-    @And("Check \"YouTube\" link is correct")
-    public void checkYT() {
-        contactPage.checkYtLink("https://www.youtube.com/channel/UCetgtvy93o3i3CvyGXKFU3g");
+    @And("Check \"YouTube\" link is {string}")
+    public void checkYT(String ytLink) {
+        contactPage.checkYtLink(ytLink);
     }
 
-    @And("Check \"Yandex Zen\" link is correct")
-    public void checkYandex() {
-        contactPage.checkYandexLink("https://zen.yandex.ru/id/5bbcbc1ba5bd5400a990e7d9");
+    @And("Check \"Yandex Zen\" link is {string}")
+    public void checkYandex(String yaLink) {
+        contactPage.checkYandexLink(yaLink);
     }
 
-    @Then("Check Otus Title")
-    public void checkOtusTitle() {
+    @Then("Check Otus Title is {string}")
+    public void checkOtusTitle(String title) {
         String otusTitle = OtusPage.driver.getTitle();
-        MatcherAssert.assertThat(otusTitle, CoreMatchers.equalTo("Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям"));
+        MatcherAssert.assertThat(otusTitle, CoreMatchers.equalTo(title));
     }
 }

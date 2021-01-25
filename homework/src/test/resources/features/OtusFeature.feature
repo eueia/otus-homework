@@ -38,39 +38,39 @@ Feature: Otus
   Scenario: Check Otus Vk Link
     When Open Otus on your browser
     Then Go to Otus Contact Page
-    And Check "Вконтакте" link is correct
+    And Check "Вконтакте" link is "https://vk.com/club145052891"
     Then Shut down browser
 
   @Test
   Scenario: Check Otus FB Link
     When Open Otus on your browser
     Then Go to Otus Contact Page
-    And Check "Facebook" link is correct
+    And Check "Facebook" link is "https://www.facebook.com/otus.ru/"
     Then Shut down browser
 
   @Test
   Scenario: Check Otus OK Link
     When Open Otus on your browser
     Then Go to Otus Contact Page
-    And Check "OK" link is correct
+    And Check "OK" link is "https://ok.ru/group/54448251797611"
     Then Shut down browser
 
   @Test
   Scenario: Check Otus OK Link
     When Open Otus on your browser
     Then Go to Otus Contact Page
-    And Check "YouTube" link is correct
+    And Check "YouTube" link is "https://www.youtube.com/channel/UCetgtvy93o3i3CvyGXKFU3g"
     Then Shut down browser
 
   @Test
   Scenario: Check Otus Yandex Zen Link
     When Open Otus on your browser
     Then Go to Otus Contact Page
-    And Check "Yandex Zen" link is correct
+    And Check "Yandex Zen" link is "https://zen.yandex.ru/id/5bbcbc1ba5bd5400a990e7d9"
     Then Shut down browser
 
   @Test
   Scenario: Check Otus Title
     When Open Otus on your browser
-    Then Check Otus Title
+    Then Check Otus Title is "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям"
     Then Shut down browser

@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 
 public class OtusContactPage extends OtusPage {
 
-    String vkButton = "//a[@class='contacts__social hover-ic']";
-    String facebookButton = "(//a[@class='contacts__social hover-ic'])[2]";
-    String yandexButton = "(//a[@class='contacts__social hover-ic'])[4]";
-    String okButton = "(//a[@class='contacts__social hover-ic'])[3]";
-    String youtubeButton = "(//a[@class='contacts__social hover-ic'])[5]";
+    String vkButton = "//a[@class='SocialBlock__Title-ktydkg-2 dWkFod']";
+    String facebookButton = "(//a[@class='SocialBlock__Title-ktydkg-2 dWkFod'])[2]";
+    String yandexButton = "Дзен";
+    String okButton = "(//a[@class='SocialBlock__Title-ktydkg-2 dWkFod'])[3]";
+    String youtubeButton = "YouTube";
 
     public void checkVkLink(String vkLink) {
         WebElement vk =  driver.findElement(By.xpath(vkButton));
@@ -27,12 +27,12 @@ public class OtusContactPage extends OtusPage {
     }
 
     public void checkYtLink(String ytLink) {
-        WebElement yt =  driver.findElement(By.xpath(youtubeButton));
+        WebElement yt =  driver.findElement(By.linkText(youtubeButton));
         assert yt.getAttribute("href").contentEquals(ytLink);
     }
 
     public void checkYandexLink(String yandexLink) {
-        WebElement yandex =  driver.findElement(By.xpath(yandexButton));
+        WebElement yandex =  driver.findElement(By.linkText(yandexButton));
         assert yandex.getAttribute("href").contentEquals(yandexLink);
     }
 }
