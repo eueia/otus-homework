@@ -1,5 +1,5 @@
 import com.google.gson.JsonObject;
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.Description;
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;
 import org.junit.jupiter.api.Test;
