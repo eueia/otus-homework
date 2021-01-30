@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class OtusPersonalDataPage extends OtusPage {
     String date = "11.11.1999";
     String contact = "My contact";
 
+    @Step("Add personal data to profile")
     public void addPersonalData() {
         WebElement firstName = driver.findElement(By.id(fname));
         WebElement firstNameLatin = driver.findElement(By.id(fnameLatin));
@@ -59,11 +61,12 @@ public class OtusPersonalDataPage extends OtusPage {
 
         driver.findElement(By.xpath(saveBtn)).click();
     }
-
+    @Step("Check personal data successfully saved")
     public void checkDataFilled() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(dataFilledMessage)));
     }
 
+    @Step("Check personal data after save")
     public void checkPersonalData() {
         WebElement firstName = driver.findElement(By.id(fname));
         WebElement firstNameLatin = driver.findElement(By.id(fnameLatin));

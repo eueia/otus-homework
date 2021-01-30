@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,13 +30,14 @@ public class OtusPage {
 
     String contacts = "//a[@href='/contacts/']";
 
-
+    @Step("Get otus.ru")
     public void getOtusPage() {
         driver.get("https://otus.ru/");
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS).implicitlyWait(5, TimeUnit.SECONDS);
     }
 
+    @Step("Auth to otus.ru")
     public void auth() {
         driver.findElement(By.xpath(authRegButton)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(emailField)));
@@ -44,12 +46,14 @@ public class OtusPage {
         driver.findElement(By.xpath(loginBtn)).click();
     }
 
+    @Step("Check name after login")
     public void checkNameAfterLogin() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(userName)));
         WebElement uName =  driver.findElement(By.xpath(userName));
         assert uName.getText().contentEquals("Тест");
     }
 
+    @Step("Go to Otus profile")
     public void goToProfile() {
         WebElement menu = driver.findElement(By.xpath(dropdownMenuHeader));
         Actions actions = new Actions(driver);
@@ -58,16 +62,19 @@ public class OtusPage {
         profileOtus.click();
     }
 
+    @Step("Check Otus email")
     public void checkOtusEmail(String emailOtus) {
         WebElement email =  driver.findElement(By.xpath(otusEmail));
         assert email.getText().contentEquals(emailOtus);
     }
 
+    @Step("Check Otus phone")
     public void checkOtusPhone(String phoneOtus) {
         WebElement phone =  driver.findElement(By.xpath(otusPhone));
         assert phone.getText().contentEquals(phoneOtus);
     }
 
+    @Step("Go to Contact pagel")
     public void goToContacts() {
         WebElement contactInfo = driver.findElement(By.xpath(contacts));
         contactInfo.click();
