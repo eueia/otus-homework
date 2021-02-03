@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.OtusPage;
 import pages.OtusPersonalDataPage;
 
@@ -17,10 +18,18 @@ public class OtusProfileTest {
 
     @BeforeAll
     public static void setUp() {
-        WebDriverManager.chromedriver().setup();
-        OtusPage.driver = new ChromeDriver();
+        String browser = System.getProperty("browser_name").toLowerCase();
+        WebDriverFactory wdf = new WebDriverFactory(browser);
+        OtusPage.driver = wdf.createDriver(new DesiredCapabilities());
         logger.info("ChromeDriver is up");
     }
+//    @BeforeAll
+//    public static void setUp() {
+//        WebDriverManager.chromedriver().setup();
+//        OtusPage.driver = new ChromeDriver();
+//        logger.info("ChromeDriver is up");
+//    }
+
     @Test
     @Description(value = "Add personal data to Otus profile and check after saving")
     public void addProfileData() {
