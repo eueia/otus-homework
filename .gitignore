@@ -2,6 +2,11 @@
 .idea/
 *.iml
 *.iws
+bin
+.project
+.classpath
+.settings
+*.ipr
 
 # Mac
 .DS_Store
@@ -9,3 +14,5 @@
 # Maven
 log/
 target/
+
+infra/work/**
