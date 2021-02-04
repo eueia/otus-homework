@@ -21,6 +21,7 @@ public class OtusProfileTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
+        options.addArguments("--headless");
         options.addArguments("--disable-dev-shm-usage");
         OtusPage.driver = new ChromeDriver(options);
         logger.info("ChromeDriver is up");
