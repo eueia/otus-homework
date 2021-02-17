@@ -108,15 +108,20 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <includes>
-                        <include>SelenoidTest.java</include>
-                    </includes>
+<!--                    <includes>-->
+<!--                        <include>SelenoidTest.java</include>-->
+<!--                    </includes>-->
                     <systemPropertyVariables>
                         <application.properties>/application.properties</application.properties>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.7.0</version>
+                    </dependency>
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
