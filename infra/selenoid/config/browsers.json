@@ -10,6 +10,14 @@
           "/tmp": "size=128m"
         }
       },
+      "87.0": {
+        "image": "selenoid/vnc_chrome:87.0",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=128m"
+        }
+      },
       "85.0": {
         "image": "selenoid/vnc_chrome:85.0",
         "port": "4444",
