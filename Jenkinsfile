@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Run maven clean test') {
             steps {
-                sh 'mvn -f homework/otus-homework/pom.xml clean test -Dtest=SelenoidTest -Dbrowser_name=$BROWSER_NAME -Dbrowser_version=$BROWSER_VERSION -Demail=eueiam@mailinator.com -Dpassword=Test1111'
+                sh 'mvn -f homework/otus-homework/pom.xml clean test -Dbrowser_name=$BROWSER_NAME -Dbrowser_version=$BROWSER_VERSION -Demail=eueiam@mailinator.com -Dpassword=Test1111'
             }
         }
         stage('Backup and Reports') {
